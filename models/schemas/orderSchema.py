@@ -5,7 +5,7 @@ class OrderSchema(ma.Schema):
     id = fields.Integer(required=False)
     date = fields.Date(required=False)
     customer_id = fields.Integer(required=True)
-    products = fields.Nested("productsSchema", many=True)
+    products = fields.Nested("ProductSchema", many=True)
     customer = fields.Nested('CustomerOrderSchema')
 
     class Meta:
