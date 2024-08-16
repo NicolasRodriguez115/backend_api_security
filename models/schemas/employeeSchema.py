@@ -9,7 +9,7 @@ class EmployeeSchema(ma.Schema):
     product = fields.Nested('ProductSchema', many=True)
 
     class Meta:
-        fields = ('id', 'name', 'email', 'phone', 'product')
+        fields = ('id', 'name', 'email', 'phone', 'product', 'total_products')
     
 employee_schema = EmployeeSchema()
 employees_schema = EmployeeSchema(many=True)
