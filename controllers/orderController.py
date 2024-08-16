@@ -12,3 +12,7 @@ def find_all_paginate():
     per_page = int(request.args.get('per_page', 10))
     orders = orderService.find_all_paginate(page, per_page)
     return orders_schema.jsonify(orders), 200
+
+
+
+    

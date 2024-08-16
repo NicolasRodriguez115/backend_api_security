@@ -10,7 +10,7 @@ class CustomerSchema(ma.Schema):
     password = fields.String(required=True)
 
     class Meta:
-        fields = ('id', 'name', 'email', 'phone', 'username','password')
+        fields = ('id', 'name', 'email', 'phone', 'username','password', 'lifetime_value')
 
 customer_schema = CustomerSchema()
 customers_schema = CustomerSchema(many=True, exclude=['password'])

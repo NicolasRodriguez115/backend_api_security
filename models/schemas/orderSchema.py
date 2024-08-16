@@ -9,7 +9,7 @@ class OrderSchema(ma.Schema):
     customer = fields.Nested('CustomerOrderSchema')
 
     class Meta:
-        fields = ('id', 'date', 'customer_id',  'products', 'customer')
+        fields = ('id', 'date', 'customer_id', 'total_value', 'products', 'customer')
 
 order_schema = OrderSchema()
 orders_schema = OrderSchema(many=True)

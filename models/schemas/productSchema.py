@@ -7,7 +7,7 @@ class ProductSchema(ma.Schema):
     price = fields.Integer(required=True)
 
     class Meta:
-        fields = ("id", 'name', 'price', 'amount_sold')
+        fields = ("id", 'name', 'price')
 
 product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
