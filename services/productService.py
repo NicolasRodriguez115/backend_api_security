@@ -26,3 +26,18 @@ def find_top_selling():
 
     result = db.session.execute(query).all()
     return result
+
+def find_total_quantity_by_date(date):
+    query = (
+        select(
+            Product.name,
+            func.sum(order_product.c.quantity).label('total_quantity')
+        )
+        .join(order_product, Product.id == order_product.c.product_id)
+        .join(Order, Order.id == order_product.c.order_id)
+        .filter(Order.date == date)
+        .group_by(Product.name)
+    )
+
+    result = db.session.execute(query).all()
+    return result

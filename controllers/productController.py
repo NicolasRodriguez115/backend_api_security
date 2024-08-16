@@ -16,3 +16,7 @@ def find_all_paginate():
 def find_top_selling():
     result = productService.find_top_selling()
     return products_schema.jsonify(result), 200
+
+def find_total_quantity_by_date(date):
+    result = productService.find_total_quantity_by_date(date)
+    return products_schema.jsonify(result), 200
