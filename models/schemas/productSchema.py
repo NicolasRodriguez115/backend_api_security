@@ -1,4 +1,4 @@
-from marshmallow import fields, validate
+from marshmallow import fields
 from . import ma
 
 class ProductSchema(ma.Schema):
