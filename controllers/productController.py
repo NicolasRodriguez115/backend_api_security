@@ -12,3 +12,7 @@ def find_all_paginate():
     per_page = int(request.args.get('per_page', 10))
     products = productService.find_all_paginate(page, per_page)
     return products_schema.jsonify(products), 200
+
+def find_top_selling():
+    result = productService.find_top_selling()
+    return products_schema.jsonify(result), 200

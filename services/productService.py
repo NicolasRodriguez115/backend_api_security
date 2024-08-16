@@ -1,7 +1,8 @@
 from database import db
 from models.product import Product
-
-from sqlalchemy import select
+from models.order import Order
+from models.orderProduct import order_product
+from sqlalchemy import select, func, desc
 
 def find_all():
     query = select(Product)
@@ -11,3 +12,17 @@ def find_all():
 def find_all_paginate(page,per_page):
     products = db.paginate(select(Product), page=page, per_page=per_page)
     return products
+
+def find_top_selling():
+    query = (
+        select(
+            Product.name, func.count(Order.id).label('amount_sold')
+        )
+        .outerjoin(order_product, Product.id == order_product.c.product_id)
+        .outerjoin(Order, Order.id == order_product.c.order_id)
+        .group_by(Product.name)
+        .order_by(desc('amount_sold'))
+    )
+
+    result = db.session.execute(query).all()
+    return result
